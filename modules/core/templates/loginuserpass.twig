@@ -1,0 +1,67 @@
+{% set pagetitle = 'КИУ' %}
+
+{% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public_html/simplesaml/assets/base/css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="/public_html/simplesaml/assets/base/css/mobile-style.css" media="(max-width: 1024px)">
+    <script src="/public_html/simplesaml/assets/base/js/jquery-3.6.0-min.js"></script>
+    <script src="/public_html/simplesaml/assets/base/js/loginuserpass.js"></script>
+{% endblock %}
+
+{% block content %}
+    <header></header>
+    <main>
+        <div class="subnav"></div>
+        <div class="container">
+            <img class="kiu-img" src="/public_html/simplesaml/assets/base/icons/xlogo-2019.png.pagespeed.ic.HVPxFxoHdA.webp">
+
+            <div class="tabs">
+                <ul>
+                    <li class="idis_login_li">Введите имя пользователя и пароль</li>
+                </ul>
+            </div>
+
+            <br>
+            <section>
+                <div class="idis_login_li">
+                <form id="login-form" class="pure-form pure-form-aligned" action="{{ formURL }}" method="post" spellcheck="false">
+                    <div class="input-group col-2">
+                        <label class="default-label" for="username">Имя пользователя</label>
+                        <input id="username" type="text" name="username" class="input" placeholder="Введите имя пользователя" autocomplete="username" value="{{ username }}">
+                    </div>
+                    <div class="input-group col-2">
+                        <label class="default-label" for="password">Пароль</label>
+                        <input id="pass" type="password" name="password" class="password" placeholder="Введите пароль" autocomplete="current-password">
+                        <div class="remark">
+                            <span>
+                                <img id="pass-eye" width="25" height="25" alt="Показать пароль" src="/public_html/simplesaml/assets/base/icons/showpw.png">
+                            </span>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button id="submit_button" class="button btn-default btn-reg-wide" type="submit" data-default="{% trans %}Login{% endtrans %}"
+                            data-processing="{% trans %}Processing...{% endtrans %}">{% trans %}Login{% endtrans %}</button>
+                </form>
+        </div>
+
+
+                <center><h3><p class="my_center"><b>Copyright &copy; 2007-2025 КИУ им. В.Г. Тимирясова (ИЭУП)</b></p></h3></center>
+            </section>
+
+            <div id="fixed-tabs">
+                <a href="https://idis.ieml.ru/Education/public/new_entrants/NewLogin.jsp;jsessionid=0761A5BA7C9B4D415DAB32AB24C09340" class="ra">
+                    <span><em>Абитуриенту</em></span>
+                    <span>Вход для абитуриентов</span>
+                </a>
+                <a href="https://t.me/+SGzfhcKYTk4Xyo-g" class="ra2">
+                    <span><em>Поддержка</em></span>
+                    <span>Техническая поддержка</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}
+
+

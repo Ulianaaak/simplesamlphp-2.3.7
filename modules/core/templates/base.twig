@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ pagetitle|default('КИУ') }}{% endblock %}</title>
+
+
+    <link rel="stylesheet" href="/public_html/simplesaml/assets/base/css/main-style.css">
+    <link rel="stylesheet" href="/public_html/simplesaml/assets/base/css/main-style.css" media="(max-width: 1024px)">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+<header>
+    {% block header %}{% endblock %}
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+{% block postload %}
+    <script src="/public_html/simplesaml/assets/base/js/jquery-3.6.0-min.js"></script>
+{% endblock%}
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>
