@@ -1,9 +1,10 @@
 
 {% set pagetitle = dictTitle | trans %}
 {% extends "base.twig" %}
+
 {% block content %}
-    <h2>{{ dictTitle | trans }}</h2>
-    {{ dictDescr | trans(parameters) }}
+{#    <h2>{{ dictTitle | trans }}</h2>#}
+{#    {{ dictDescr | trans(parameters) }}#}
 
     {# include optional information for error
        Some exceptions set 'includeTemplate' to the name of a template to include.
@@ -14,45 +15,100 @@
         {% set namespacedTemplate = "@" ~ parts[0] ~ "/" ~ parts[1] %}
         {% include(namespacedTemplate) %}
     {%- endif %}
-
-    <div class="message-box">
-        <p>{{ 'If you report this error, please also report this tracking number which makes it possible to locate your session in the logs available to the system administrator:' | trans }}</p>
-        <div class="pure-button-group two-elements" role="group">
-            <label class="pure-button hollow" disabled><pre id="trackid">{{ error.trackId }}</pre></label>
-            <button data-clipboard-target="#trackid" id="btntrackid" class="pure-button clipboard-btn copy">
-                <i class="fa fa-copy"></i>
-            </button>
+    <div class="subnav">
+    </div>
+    <div class="container">
+        <img class="kiu-img"
+             src="{{ asset('icons/xlogo-2019.png.pagespeed.ic.HVPxFxoHdA.webp') }}">
+        <div class="tabs">
+            <ul>
+                <li class="err_tab">{{ 'Bad request received' | trans }}</li>
+            </ul>
         </div>
+        <br>
+        <section>
+            <div class="err-msg">
+                <p>{{ 'There is an error in the request to this page. The reason was: %REASON%'  | trans }}</p>
+                <p>{{ 'If you report this error, please also report this tracking number which makes it possible to locate your session in the logs available to the system administrator:' | trans }}</p>
+                <div class="input-group col-2">
+                    <label class="default-label" style="color: red;"
+                           id="trackid">{{ 'Tracking number:' | trans }}</label>
+                    <input type="text" class="input" name="tracking-number" value="{{ error.trackId }}" readonly
+                           id="tracking-number">
+                    <div class="remark">
+            <span>
+        <img width="25" height="25" alt="Copy to VK" src="/public_html/simplesaml/assets/base/icons/copy.png?tag=08f86"
+             onclick="copyTrackingNumber()">
+    </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            {# Add error report submit section if we have a valid technical contact. 'errorreportaddress' will only be set if
+the technical contact email address has been set. #}
+            {% if errorReportAddress is defined -%}
+                <h1>{{ 'Report errors' | trans }}</h1>
+                <div class="err_tab">
+                    <form action="{{ errorReportAddress }}" class="pure-form" method="post">
+                        <div class="input-group col-2">
+                            <label for="email" class="default-label">{{ 'E-mail address' | trans }}</label>
+                            <input type="email" placeholder="{{ 'Enter your email address' | trans }}"
+                                   required class="input" name="email" value="">
+                        </div>
+                        <div class="input-group col-2">
+                            <label for="password" class="default-label">{{ 'Password' | trans }}</label>
+                            <textarea id="password" class="metadatabox" name="text" rows="6" cols="50"
+                                      placeholder="{{ 'Explain what you did when this error occurred...' | trans }}"
+                                      required></textarea>
+                        </div>
+                        <br>
+                        <p>
+                            <input type="hidden" name="reportId" value="{{ error.reportId }}"/>
+                            <input type="submit" name="send" class="button btn-default btn-reg-wide"
+                                   value="{{ 'SEND ERROR REPORT' | trans }}"/>
+                        </p>
+                    </form>
+                </div>
+                <br>
+                <h1>{{ 'How to get help' | trans }}</h1>
+                <p>{{ 'This error probably is due to some unexpected behaviour or to misconfiguration of SimpleSAMLphp. Contact the administrator of this login service, and send them the error message above.' | trans }}</p>
+
+                {# print out exception only if the exception is available #}
+                {% if showerrors -%}
+                    <h1>
+                        <button id="errorButton">
+                            {{ 'Debug information' | trans }}
+                            <img class="icon" src="{{ asset('icons/arrow-down.png') }}" onclick="addEventListener()">
+                        </button>
+                    </h1>
+                    <div id="errorBox" style="display: none;">
+
+                        <p>{{ 'The debug information below may be of interest to the administrator / help desk:' | trans }}</p>
+                        <div class="code-box code-box-content">
+                            <p>{{ error.exceptionMsg }}<br/>{{ error.exceptionTrace }}</p>
+                        </div>
+                    </div>
+
+                {%- endif %}
+                <center>
+                    <h2><p class="my_center"><b>{{ 'Copyright © 2007-2025 KIU named. V.G. Timiryazova (IEUP)' | trans }}</b></p>
+                    </h2>
+                </center>
+
+            {%- endif %}
+        </section>
     </div>
 
-    {# print out exception only if the exception is available #}
-    {% if showerrors -%}
-        <h2>{{'Debug information' | trans}}</h2>
-        <p>{{'The debug information below may be of interest to the administrator / help desk:' | trans}}</p>
-        <div class="code-box code-box-content">
-            <pre>{{ error.exceptionMsg }}<br />{{ error.exceptionTrace }}
-            </pre>
-        </div>
-    {%- endif %}
-
-    {# Add error report submit section if we have a valid technical contact. 'errorreportaddress' will only be set if
-       the technical contact email address has been set. #}
-    {% if errorReportAddress is defined -%}
-        <h2>{{ 'Report errors' | trans }}</h2>
-        <form action="{{ errorReportAddress }}" class="pure-form" method="post">
-            <p>{{ 'Optionally enter your email address, for the administrators to be able contact you for further questions about your issue:' | trans }}</p>
-            <label for="email">{{ 'E-mail address:' | trans }}</label>
-                <input type="email" name="email" id="email" class="edge" size="50" value="{{ email }}">
-
-            <textarea class="text-area edge" name="text" rows="6" cols="50" placeholder="{{ 'Explain what you did when this error occurred...' | trans }}" required></textarea>
-        <p class="center">
-            <input type="hidden" name="reportId" value="{{ error.reportId }}" />
-            <input type="submit" name="send" class="pure-button pure-button-red" value="{{ 'Send error report' | trans }}" />
-        </p>
-        </form>
-    {%- endif %}
-
-    <h2>{{ 'How to get help' | trans }}</h2>
-    <p>{{ 'This error probably is due to some unexpected behaviour or to misconfiguration of SimpleSAMLphp. Contact the administrator of this login service, and send them the error message above.' | trans }}</p>
-
+    <script>
+        function copyTrackingNumber() {
+            var copyText = document.getElementById("tracking-number");
+            if (copyText) {
+                copyText.select();
+                navigator.clipboard.writeText(copyText.value)
+                    .catch(err => console.error('Could not copy text: ', err));
+            }
+        }
+    </script>
 {% endblock %}

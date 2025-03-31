@@ -6,6 +6,8 @@ $db_config = [
     'pwd' => 'warrior12345',
     'service_name' => 'pdb1.ieml.ru'
 ];
+$tns = "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.8)(PORT=1521))(CONNECT_DATA=(SID=MOONUTF8)))";
+
 $config = [
     /*
      * When multiple authentication sources are defined, you can specify one to use by default
@@ -162,13 +164,12 @@ $config = [
 
         // The entity ID of this SP.
         'entityID' => 'https://myapp.example.org/',
-
         // The entity ID of the IdP this SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
         'idp' => null,
-
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
+
         'discoURL' => null,
 
         /*
@@ -200,7 +201,6 @@ $config = [
         ],
         */
     ],
-
 
     /*
     'example-sql' => [

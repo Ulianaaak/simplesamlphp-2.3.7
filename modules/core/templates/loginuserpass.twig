@@ -1,67 +1,164 @@
-{% set pagetitle = 'КИУ' %}
+{% set pagetitle = 'Enter your username and password'|trans %}
+{% extends "base.twig" %}
 
-{% block head %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public_html/simplesaml/assets/base/css/main-style.css">
-    <link rel="stylesheet" type="text/css" href="/public_html/simplesaml/assets/base/css/mobile-style.css" media="(max-width: 1024px)">
-    <script src="/public_html/simplesaml/assets/base/js/jquery-3.6.0-min.js"></script>
-    <script src="/public_html/simplesaml/assets/base/js/loginuserpass.js"></script>
+{% block postload %}
+    <script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
 {% endblock %}
 
 {% block content %}
-    <header></header>
-    <main>
-        <div class="subnav"></div>
-        <div class="container">
-            <img class="kiu-img" src="/public_html/simplesaml/assets/base/icons/xlogo-2019.png.pagespeed.ic.HVPxFxoHdA.webp">
+    {%- if not isProduction -%}
+        <div class="message-box warning">
+            {% trans %}You are now accessing a pre-production system. This authentication setup is for testing and pre-production verification only. If someone sent you a link that pointed you here, and you are not
+                <i>a tester</i>, you probably got the wrong link, and should <b>not be here</b>.{% endtrans %}
+        </div>
+    {%- endif %}
 
-            <div class="tabs">
-                <ul>
-                    <li class="idis_login_li">Введите имя пользователя и пароль</li>
-                </ul>
+    {% if errorcode -%}
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <div class="message-box error">
+                    {% set errtitles = errorcodes['title'] %}
+                    {% set errtitle = errtitles[errorcode] %}
+                    <h3>{{ errtitle|trans(errorparams) }}</h3>
+                    {% set errdescs = errorcodes['descr'] %}
+                    {% set errdesc = errdescs[errorcode] %}
+                    <p>{{ errdesc|trans(errorparams) }}</p>
+                </div>
             </div>
+        </div>
+    {%- endif %}
 
-            <br>
+    <div class="subnav"></div>
+    <div class="container">
+        <img class="kiu-img" src="{{ asset('icons/xlogo-2019.png.pagespeed.ic.HVPxFxoHdA.webp') }}">
+        <div class="tabs">
+            <ul>
+                <li class="idis_login_li">{{ 'Enter your username and password' | trans }}</li>
+            </ul>
+        </div>
+        <section>
             <section>
                 <div class="idis_login_li">
-                <form id="login-form" class="pure-form pure-form-aligned" action="{{ formURL }}" method="post" spellcheck="false">
-                    <div class="input-group col-2">
-                        <label class="default-label" for="username">Имя пользователя</label>
-                        <input id="username" type="text" name="username" class="input" placeholder="Введите имя пользователя" autocomplete="username" value="{{ username }}">
-                    </div>
-                    <div class="input-group col-2">
-                        <label class="default-label" for="password">Пароль</label>
-                        <input id="pass" type="password" name="password" class="password" placeholder="Введите пароль" autocomplete="current-password">
-                        <div class="remark">
-                            <span>
-                                <img id="pass-eye" width="25" height="25" alt="Показать пароль" src="/public_html/simplesaml/assets/base/icons/showpw.png">
-                            </span>
+                    <form id="login-form" class="pure-form pure-form-aligned" action="{{ formURL }}" method="post"
+                          spellcheck="false">
+                        <div class="input-group col-2">
+                            <label class="default-label" for="username">{{ 'Username'|trans }}</label>
+                            <input id="username" {{ forceUsername ? 'disabled autocomplete="off"' }}
+                                   placeholder="{{ 'Enter your username' | trans }}" type="text" name="username"
+                                   class="input"
+                                    {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
+                                    {%- if not forceUsername and not username %} autofocus {% endif %}>
                         </div>
-                    </div>
-                    <br><br>
-                    <button id="submit_button" class="button btn-default btn-reg-wide" type="submit" data-default="{% trans %}Login{% endtrans %}"
-                            data-processing="{% trans %}Processing...{% endtrans %}">{% trans %}Login{% endtrans %}</button>
-                </form>
-        </div>
-
-
-                <center><h3><p class="my_center"><b>Copyright &copy; 2007-2025 КИУ им. В.Г. Тимирясова (ИЭУП)</b></p></h3></center>
+                        {% if rememberUsernameEnabled and not forceUsername %}
+                            <div class="pure-controls">
+                                <label for="remember_username" class="pure-checkbox">
+                                    <input id="remember_username" type="checkbox" tabindex="4"
+                                            {{ rememberUsernameChecked ? 'checked' }} name="remember_username"
+                                           value="Yes">
+                                    <small>{{ 'Remember my username'|trans }}</small>
+                                </label>
+                            </div>
+                        {% endif %}
+                        <div class="input-group col-2">
+                            <label class="default-label" for="password">{{ 'Password' | trans }}</label>
+                            <input id="pass" type="password" tabindex="2" name="password"
+                                   placeholder="{{ 'Enter your password' | trans }}" class="password"
+                                   autocomplete="current-password"
+                                    {%- if forceUsername or username %} autofocus {% endif %}>
+                            <div class="remark">
+                                <span>
+                                    <img id="pass-eye" width="25" height="25" alt="{{ 'KIU in VK' | trans }}"
+                                         title="{{ 'KIU in VK' | trans }}" src="{{ asset('icons/showpw.png') }}">
+                                </span>
+                            </div>
+                        </div>
+                        {% if rememberMeEnabled %}
+                            <div class="pure-controls">
+                                <label for="remember_me" class="pure-checkbox">
+                                    <input id="remember_me" type="checkbox" tabindex="5"
+                                            {{ rememberMeChecked ? 'checked="checked"' }} name="remember_me"
+                                           value="Yes">
+                                    <small>{{ 'Remember me'|trans }}</small>
+                                </label>
+                            </div>
+                        {% endif %}
+                        {% if organizations is defined %}
+                            <div class="pure-control-group">
+                                <label for="organization">{{ 'Organization'|trans }}</label>
+                                <div class="pure-select right pure-input-1-2 pure-input-sm-1-1">
+                                    <select name="organization" id="organization" tabindex="3">
+                                        {{ selectedOrg ?: null }}
+                                        {% for id, orgDesc in organizations %}
+                                            {% if id == selectedOrg %}
+                                                {% set selected = 'selected="selected"' %}
+                                            {% else %}
+                                                {% set selected = '' %}
+                                            {% endif %}
+                                            {% if orgDesc %}
+                                                <option value="{{ id }}" {{ selected }}>{{ orgDesc|trans }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {% if rememberOrganizationEnabled is defined %}
+                                    <div class="pure-controls">
+                                        <label for="remember_organization" class="pure-checkbox">
+                                            <input type="checkbox" id="remember_organization" tabindex="5"
+                                                   name="remember_organization"
+                                                   value="Yes" {{ rememberOrganizationChecked ? 'checked="checked"' }}>
+                                            <small>{{ 'Remember my organization'|trans }}</small>
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            </div> <!--pure-control-group-->
+                        {% endif %}
+                        <br><br>
+                        <div class="pure-control-group center login-form-submit">
+                            <button id="submit_button" class="button btn-default btn-reg-wide" type="submit"
+                                    data-default="{% trans %}Login{% endtrans %}"
+                                    data-processing="{% trans %}Processing...{% endtrans %}">{% trans %}Login{% endtrans %}</button>
+                        </div>
+                    </form>
+                </div>
+                <center>
+                    <h3>
+                        <p class="my_center">
+                            <b>{{ 'Copyright © 2007-2025 KIU named. V.G. Timiryazova (IEUP)' | trans }}</b></p>
+                    </h3>
+                </center>
             </section>
-
             <div id="fixed-tabs">
-                <a href="https://idis.ieml.ru/Education/public/new_entrants/NewLogin.jsp;jsessionid=0761A5BA7C9B4D415DAB32AB24C09340" class="ra">
-                    <span><em>Абитуриенту</em></span>
-                    <span>Вход для абитуриентов</span>
+                <a href="https://idis.ieml.ru/Education/public/new_entrants/NewLogin.jsp;jsessionid=0761A5BA7C9B4D415DAB32AB24C09340"
+                   class="ra">
+                    <span><em>{{ 'For entrants' | trans }}</em></span>
+                    <span>{{ 'Entry for entrants' | trans }}</span>
                 </a>
                 <a href="https://t.me/+SGzfhcKYTk4Xyo-g" class="ra2">
-                    <span><em>Поддержка</em></span>
-                    <span>Техническая поддержка</span>
-                </a>
+                    <span><em>{{ 'Support' | trans }}</em></span>
+                    <span>{{ 'Technical support' | trans }}</span>
+                </a></div>
+                <div id="fixed-tabs-dropdown">
+                <div class="dropdown">
+                    <button class="dropbtn">{{ 'Language' | trans }}</button>
+                    <div class="dropdown-content">
+                        {% for key, lang in languageBar %}
+                            {% if key == currentLanguage %}
+                                <li  class="pure-menu-item"><a class="pure-menu-heading" href="#">{{ lang.name }}</a></li>
+                            {% else %}
+                                {% if lang.url %}
+                                    <li class="pure-menu-item"><a href="{{ lang.url }}{% if queryParams %}&{% endif %}{% for name, value in queryParams %}{% if not loop.first %}&{% endif %}{% if value %}{{ name }}={{ value }}{% else %}{{ name }}{% endif %}{% endfor %}" class="pure-menu-link">{{ lang.name }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                </div></div>
             </div>
-        </div>
-    </main>
-
-
+        </section>
+    </div>
+    {% if loginpage_links is defined %}
+        <ul>
+            {% for link in loginpage_links %}
+                <li><a href="{{ link.href }}">{{ link['text']|trans }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
-
-

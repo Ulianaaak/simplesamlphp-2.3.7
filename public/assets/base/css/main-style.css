@@ -98,7 +98,7 @@ ul{
 }
 p{
 	padding:0;
-	margin:28px 0 20px
+	margin: 28px 0 20px
 }
 p:first-child{
 	margin-top:0
@@ -1879,7 +1879,7 @@ padding:28px 55px;margin:0 0;border:2px solid rgb(21,57,128);border-radius:2px;b
 	display:block
 }
 
-#fixed-tabs {position: fixed; right: 0; text-align: center; line-height: 1; font-size: 0; display: none}
+#fixed-tabs {position: fixed; right: 0; text-align: center; line-height: 1; font-size: 0; display: block;}
 #fixed-tabs a {font-size: 16px; color: #fff; position: relative; overflow: hidden; text-transform: uppercase;}
 #fixed-tabs a small {font-size: 10px; display: block;}
 #fixed-tabs i, #fixed-tabs i:before { display: block; margin: 0 auto!important}
@@ -1892,51 +1892,52 @@ padding:28px 55px;margin:0 0;border:2px solid rgb(21,57,128);border-radius:2px;b
 #fixed-tabs .ra {background-color:rgb(33,78,146)}
 #fixed-tabs .ra2 {background-color: rgb(41,63,118)}
 @media (min-width: 731px) {
-    #fixed-tabs a.call, #fixed-tabs a.map {display: none}
+	#fixed-tabs a.call, #fixed-tabs a.map {display: none}
 }
 @media (min-width:1101px) {
-    #page {padding: 0 45px; max-width: 1265px;}
-    #fixed-tabs {top: 180px; display:block}
-    
-    #fixed-tabs a {display: block; text-align: left; margin-left: auto; border-radius: 5px 0 0 5px}
-    #fixed-tabs a + a {margin-top: 10px}
-    #fixed-tabs a span {display: block;}
-    #fixed-tabs a span:first-child {text-align: center; padding: 8px 0}    
-    .fix-nav #fixed-tabs a, .fix-nav #fixed-tabs a span:first-child, #fixed-tabs a, #fixed-tabs a span:first-child {width: 32px}
-    .fix-nav #fixed-tabs a span:nth-of-type(2), #fixed-tabs a span:nth-of-type(2) {position: absolute; left: 40px; top: 50%; width: 260px; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); -webkit-transition: width .3s; transition: width .3s;}
-    .fix-nav #fixed-tabs a:hover, #fixed-tabs a:hover {width: 250px;}
-    .fix-nav #fixed-tabs a.sp:hover, #fixed-tabs a.sp:hover {width: 275px;}
-    .fix-nav #fixed-tabs .ew:hover {width:275px;}
-    .fix-nav #fixed-tabs i {font-size: 16px}
-    .fix-nav #fixed-tabs em {display: none}
+	#page {padding: 0 45px; max-width: 1265px;}
+	#fixed-tabs {top: 180px; display:block}
+
+	#fixed-tabs a {display: block; text-align: left; margin-left: auto; border-radius: 5px 0 0 5px}
+	#fixed-tabs a + a {margin-top: 10px}
+	#fixed-tabs a span {display: block;}
+	#fixed-tabs a span:first-child {text-align: center; padding: 8px 0}
+	.fix-nav #fixed-tabs a, .fix-nav #fixed-tabs a span:first-child, #fixed-tabs a, #fixed-tabs a span:first-child {width: 32px}
+	.fix-nav #fixed-tabs a span:nth-of-type(2), #fixed-tabs a span:nth-of-type(2) {position: absolute; left: 40px; top: 50%; width: 260px; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); -webkit-transition: width .3s; transition: width .3s;}
+	.fix-nav #fixed-tabs a:hover, #fixed-tabs a:hover {width: 250px;}
+	.fix-nav #fixed-tabs a.sp:hover, #fixed-tabs a.sp:hover {width: 275px;}
+	.fix-nav #fixed-tabs .ew:hover {width:275px;}
+	.fix-nav #fixed-tabs i {font-size: 16px}
+	.fix-nav #fixed-tabs em {display: none}
 }
 @media (min-width:1101px) {
-    #fixed-tabs a, #fixed-tabs a span:first-child {width: 100px}
-    #fixed-tabs a:hover {width: 350px;}
-    #fixed-tabs a span:first-child {padding: 10px 10px 10px 0}
-    #fixed-tabs a span:nth-of-type(2) {left: 100px}
-    #fixed-tabs i {font-size: 20px}
-    #fixed-tabs em {display: block; margin-top: 0px; text-align: left; margin-left: 5px;}
-    #fixed-tabs a.gp, #fixed-tabs a.fb, #fixed-tabs a.sp {display: block}
-    #fixed-tabs .ew:hover {width: 325px;}
-    #fixed-tabs a.sp:hover {width: 300px;}
+	#fixed-tabs a, #fixed-tabs a span:first-child {width: 100px}
+	#fixed-tabs a:hover {width: 350px;}
+	#fixed-tabs a span:first-child {padding: 10px 10px 10px 0}
+	#fixed-tabs a span:nth-of-type(2) {left: 100px}
+	#fixed-tabs i {font-size: 20px}
+	#fixed-tabs em {display: block; margin-top: 0px; text-align: left; margin-left: 5px;}
+	#fixed-tabs a.gp, #fixed-tabs a.fb, #fixed-tabs a.sp {display: block}
+	#fixed-tabs .ew:hover {width: 325px;}
+	#fixed-tabs a.sp:hover {width: 300px;}
 }
-@media (max-width: 1101px) {    
-    #fixed-tabs {display: block; bottom: 0; width: 100%; box-shadow: 0 0 15px rgba(0,0,0,0.3); display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex}
-    #fixed-tabs img {display: none}
-    #fixed-tabs a {padding: 0px 0px 12px 0px; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1;}
-    #fixed-tabs i {font-size: 16px}
-    #fixed-tabs a span {display: inline-block; vertical-align: middle;}
-    #fixed-tabs a span:last-child {margin-left: 5px;}
-    #fixed-tabs a strong {display: none}
-    footer, .mean-container .mean-nav, .modal {padding-bottom: 40px!important}}
+@media (max-width: 1101px) {
+	#fixed-tabs {display: block; bottom: 0; width: 100%; box-shadow: 0 0 15px rgba(0,0,0,0.3); display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; justify-content: space-between;}
+	#fixed-tabs img {display: none}
+	#fixed-tabs a {padding: 0px 0px 12px 0px; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; text-align: center;}
+	#fixed-tabs i {font-size: 16px}
+	#fixed-tabs a span {display: inline-block; vertical-align: middle;}
+	#fixed-tabs a span:last-child {margin-left: 5px;}
+	#fixed-tabs a strong {display: none}
+	footer, .mean-container .mean-nav, .modal {padding-bottom: 40px!important}}
 @media (max-width: 900px) {
-    #fixed-tabs a.fm, #fixed-tabs a.ew {display: none}}
+	#fixed-tabs a.fm, #fixed-tabs a.ew {display: none}}
 @media (min-width: 731px) {
-    #fixed-tabs a.call, #fixed-tabs a.map {display: none}}
-@media (max-width: 730px) {  
-    #fixed-tabs a.ra a.ra2 {-webkit-box-flex: 2;-webkit-flex: 2;-ms-flex: 2;flex: 2}
+	#fixed-tabs a.call, #fixed-tabs a.map {display: none}}
+@media (max-width: 730px) {
+	#fixed-tabs a.ra a.ra2 {-webkit-box-flex: 2;-webkit-flex: 2;-ms-flex: 2;flex: 2}
 }
+
 
 .err-msg{
 	padding:28px 55px;
@@ -1946,5 +1947,82 @@ padding:28px 55px;margin:0 0;border:2px solid rgb(21,57,128);border-radius:2px;b
 	background:#ced4da;
 }
 
+#errorBox{
+	padding:28px 55px;
+	margin-bottom: 20px;
+	border:2px solid rgba(34,84,140,.7);
+	border-radius:2px;
+	background:#ced4da;
+	overflow-wrap: break-word;
+}
 
+#errorButton{
+	font-weight:700;
+}
+
+#errorButton .icon {
+	margin-right: 10px;
+	width: 25px;
+	height: 25px;
+}
+
+
+.dropbtn {
+	font-size: 10px;
+	font-style: normal;
+	background-color: rgb(21, 57, 128);
+	color: white;
+	padding: 10px 10px 10px 5px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px 0 0 5px;
+	text-transform: uppercase;
+	width: 100px;
+	height: auto;
+	text-align: left;
+
+}
+
+
+.dropdown {
+	position: relative;
+	right: 0;
+	margin: 10px;
+	display: inline-block;
+	width: 100px;
+	margin-right: 0;
+	margin-top: 100px;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	right: 0;
+	background-color: #ced4da;
+	min-width: 100px;
+	border-radius: 5px;
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: #333;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+}
+
+.dropdown-content a:hover {
+	background-color: rgb(21, 57, 128);
+	width: 100px;;
+}
+
+
+.dropdown:hover .dropdown-content {
+	display: block;
+	width: 100px;
+}
+
+#fixed-tabs-dropdown {position: fixed; right: 0; text-align: center; line-height: 1; font-size: 0; display: block;}
+#fixed-tabs-dropdown a {font-size: 16px; color: #fff; position: relative; overflow: hidden; text-transform: uppercase;}
 

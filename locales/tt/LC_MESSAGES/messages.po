@@ -64,7 +64,7 @@ msgstr "Ошибка источника аутентификации"
 
 #: /home/runner/work/simplesamlphp/simplesamlphp/src/SimpleSAML/Error/ErrorCodes.php:73
 msgid "Bad request received"
-msgstr "Получен неправильный отклик"
+msgstr "Дөрес булмаган сорау кабул ителде"
 
 #: /home/runner/work/simplesamlphp/simplesamlphp/src/SimpleSAML/Error/ErrorCodes.php:77
 msgid "Bad request to discovery service"
@@ -137,17 +137,18 @@ msgid "Download the X509 certificates as PEM-encoded files."
 msgstr "Скачать сертификаты X509 в формате PEM файлов."
 
 msgid "E-mail address"
-msgstr "Ваш e-mail"
+msgstr "Электрон почта адресы"
 
 msgid "Enter your email address"
-msgstr "Введите адрес эл. почты"
+msgstr "Электрон почта адресыңызны кертегез"
 
 #: /home/runner/work/simplesamlphp/simplesamlphp/src/SimpleSAML/Error/ErrorCodes.php:260
 msgid "Either no user with the given username could be found, or the password you gave was wrong. Please check the username and try again."
 msgstr "Либо не существует пользователя с данным именем, либо неверный пароль.Пожалуйста, проверьте имя пользователя и пробуйте снова."
 
 msgid "Enter your username and password"
-msgstr "Введите имя пользователя и пароль"
+msgstr "Кулланучы исемен һәм парольне кертегез"
+
 
 msgid "Entitlement regarding the service"
 msgstr "Право на предоставление услуг"
@@ -190,7 +191,7 @@ msgid "Error when communicating with the CAS server."
 msgstr "Произошла ошибка при обмене данными с сервером CAS."
 
 msgid "Explain what you did when this error occurred..."
-msgstr "Уточните ваши действия перед появлением ошибки... "
+msgstr "Хата булганда сез нәрсә эшләгәнегезне аңлатыгыз..."
 
 msgid "Fax number"
 msgstr "Номер факса"
@@ -233,7 +234,7 @@ msgid "Home telephone"
 msgstr "Домашний телефон"
 
 msgid "How to get help"
-msgstr "Как получить помощь"
+msgstr "Ярдәм ничек алу"
 
 msgid "Identity assurance profile"
 msgstr "Идентификатор гарантированного профайла"
@@ -242,10 +243,10 @@ msgid "Identity number assigned by public authorities"
 msgstr "Идентификационный номер, присваиваемый органами государственной власти"
 
 msgid "If you report this error, please also report this tracking number which makes it possible to locate your session in the logs available to the system administrator:"
-msgstr "При отправке сообщения об ошибке, пожалуйста, сообщите этот трекинговый номер (он позволит администратору найти информацию о вашей сессии в системных логах):"
+msgstr "Әгәр сез бу хатаны хабарласагыз, зинһар, системадагы журналларда сезнең сессиягезне табу өчен бу трекинг номерын да күрсәтегез:"
 
 msgid "Tracking number:"
-msgstr "Трекинговый номер:"
+msgstr "Трекинг номеры:"
 
 msgid "In SAML 2.0 Metadata XML format:"
 msgstr "xml формат метаданных SAML 2.0:"
@@ -298,7 +299,7 @@ msgid "Logging out..."
 msgstr "Выход из системы..."
 
 msgid "Login"
-msgstr "Войти"
+msgstr "Керү"
 
 msgid "Login at"
 msgstr "Войти в"
@@ -468,7 +469,7 @@ msgid "Remember my username"
 msgstr "Запомнить моё имя пользователя"
 
 msgid "Report errors"
-msgstr "Сообщение об ошибках"
+msgstr "Хаталар турында хабарлау"
 
 msgid "Required fields"
 msgstr "Обязательные поля"
@@ -567,7 +568,7 @@ msgid "Submit message"
 msgstr "Отправить сообщение"
 
 msgid "SEND ERROR REPORT"
-msgstr "ОТПРАВИТЬ СООБЩЕНИЕ ОБ ОШИБКЕ"
+msgstr "ХАТА ТУРЫНДА ХАБАРЛАМА ЮЛЛАУ"
 
 msgid "Superfluous options in config file"
 msgstr "Избыточные параметры в файле конфигурации"
@@ -590,7 +591,7 @@ msgid "The debug information below may be of interest to the administrator / hel
 msgstr "Нижеприведенная информация может быть полезна администратору системы:"
 
 msgid "The error report has been sent to the administrators."
-msgstr "Сообщение об ошибке было отправлено администраторам."
+msgstr "Хата турындагы хабар администраторларга җибәрелде."
 
 msgid "The following fields was not recognized"
 msgstr "Следующие поля не распознаны"
@@ -627,7 +628,7 @@ msgstr "Пароль в файле конфигурации (auth.adminpassword)
 
 #: /home/runner/work/simplesamlphp/simplesamlphp/src/SimpleSAML/Error/ErrorCodes.php:193
 msgid "There is an error in the request to this page. The reason was: %REASON%"
-msgstr "Ошибка в запросе к этой странице. Причина: %REASON%"
+msgstr "Бу биткә җибәрелгән сорауда хата бар. Сәбәп: %REASON%"
 
 #: /home/runner/work/simplesamlphp/simplesamlphp/src/SimpleSAML/Error/ErrorCodes.php:222
 msgid "There is some misconfiguration of your SimpleSAMLphp installation. If you are the administrator of this service, you should make sure your metadata configuration is correctly setup."
@@ -642,7 +643,7 @@ msgid "This endpoint is not enabled. Check the enable options in your configurat
 msgstr "Данная конечная точка не активирована. Проверьте опции в конфигурации вашего SimpleSAMLphp."
 
 msgid "This error probably is due to some unexpected behaviour or to misconfiguration of SimpleSAMLphp. Contact the administrator of this login service, and send them the error message above."
-msgstr "Эта ошибка произошла, вероятно, из-за непредвиденной ситуации или неправильной конфигурации SimpleSAMLphp. Свяжитесь с администратором этого сервиса и отправьте ему вышеуказанное сообщение об ошибке."
+msgstr "Бу хата, бигрәк тә, көтелмәгән хәрәкәт яки SimpleSAMLphp ның дөрес булмаган көйләүләреннән килеп чыккан. Бу керү сервисының администраторына мөрәжәгать итегез һәм аларга югарыдагы хата турындагы хабарны җибәрегез."
 
 msgid "Title"
 msgstr "Заглавие"
@@ -673,7 +674,7 @@ msgid "User's password hash"
 msgstr "Хэш пароля пользователя"
 
 msgid "Username"
-msgstr "Имя пользователя"
+msgstr "Кулланучы исеме"
 
 msgid "WS-Fed SP Demo Example"
 msgstr "Демо пример сервис провайдера WS-Fed SP"
@@ -765,34 +766,34 @@ msgid "not set"
 msgstr "не установлен"
 
 msgid "For entrants"
-msgstr "Абитуриенты"
+msgstr "Абитуриентлар"
 
 msgid "Entry for entrants"
-msgstr "Вход для абитуриентов"
+msgstr "Абитуриентлар өчен керегез"
 
 msgid "Support"
-msgstr "Поддержка"
+msgstr "Ярдәм"
 
 msgid "Technical support"
-msgstr "Техническая поддержка"
+msgstr "Техник ярдәм"
 
 msgid "Copyright © 2007-2025 KIU named. V.G. Timiryazova (IEUP)"
-msgstr "Copyright © 2007-2025 КИУ им. В.Г. Тимирясова (ИЭУП)"
+msgstr "Copyright © 2007-2025 В.Г. Тимирясов исемендәге КИУ (ИЭУП)"
 
 msgid "Enter your email address"
-msgstr "Введите адрес эл. почты"
+msgstr "Электрон почта адресыңызны кертегез"
 
 msgid "Enter your password"
-msgstr "Введите пароль"
+msgstr "Парольне кертегез"
 
 msgid "Enter your username"
-msgstr "Введите имя пользователя"
+msgstr "Кулланучы исемеңне кертегез"
 
 msgid "KIU in VK"
 msgstr "КИУ в VK"
 
 msgid "Processing..."
-msgstr "Обработка..."
+msgstr "Эшкәртелә..."
 
 msgid "Language"
-msgstr "Язык"
+msgstr "Тел"

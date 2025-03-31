@@ -2,7 +2,48 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <h2>{{ pagetitle }}</h2>
 
-    <p>{{ 'The error report has been sent to the administrators.' |trans }}</p>
+        <div class="subnav">
+        </div>
+
+        <div class="container">
+            <img class="kiu-img" src="{{ asset('icons/xlogo-2019.png.pagespeed.ic.HVPxFxoHdA.webp') }}" alt="Logo">
+
+            <br>
+
+            <section>
+                <center>
+                    {{ 'The error report has been sent to the administrators.'|trans }}
+                </center>
+
+                <center>
+                    <h3>
+                        <p class="my_center">
+                           <p class="my_center"><b>{{ 'Copyright © 2007-2025 KIU named. V.G. Timiryazova (IEUP)' | trans }}</b></p>
+                        </p>
+                    </h3>
+                </center>
+            </section>
+        </div>
+
+
+    <script>
+        $(".idis_login_li").addClass("active");
+    </script>
+
+    <script>
+        function show_hide_password(target) {
+            var input = document.getElementById('pass');
+            if (input.getAttribute('type') === 'password') {
+                target.classList.add('view');
+                input.setAttribute('type', 'text');
+            } else {
+                target.classList.remove('view');
+                input.setAttribute('type', 'password');
+            }
+            return false;
+        }
+    </script>
+
 {% endblock %}
+

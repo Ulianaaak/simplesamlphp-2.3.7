@@ -8,6 +8,7 @@ $httpUtils = new \SimpleSAML\Utils\HTTP();
 
 $config = [
 
+
     /*******************************
      | BASIC CONFIGURATION OPTIONS |
      *******************************/
@@ -128,8 +129,22 @@ $config = [
      * also as the technical contact in generated metadata.
      */
     'technicalcontact_name' => 'Administrator',
-    'technicalcontact_email' => 'na@example.org',
+    'technicalcontact_email' => 'yulya@example.org',
 
+    'contacts' => [
+        [
+            'contactType'       => 'other',
+            'emailAddress'      => 'info@ieml.ru',
+//            'givenName'         => 'John',
+//            'surName'           => 'Doe',
+           'telephoneNumber'   => '+7 (843) 231-92-90',
+            'company'           => 'KIU',
+//            'attributes'        => [
+//                'xmlns:remd'        => 'http://refeds.org/metadata',
+//                'remd:contactType'  => 'http://refeds.org/metadata/contactType/security',
+//            ],
+        ],
+    ],
     /*
      * (Optional) The method by which email is delivered.  Defaults to mail which utilizes the
      * PHP mail() function.
@@ -326,7 +341,7 @@ $config = [
      */
     'debug' => [
         'saml' => false,
-        'backtraces' => true,
+        'backtraces' => false,
         'validatexml' => false,
     ],
 
@@ -337,7 +352,7 @@ $config = [
      * When 'errorreporting' is enabled, a form will be presented for the user to report
      * the error to 'technicalcontact_email'.
      */
-    'showerrors' => true,
+    'showerrors' => false,
     'errorreporting' => true,
 
     /*
@@ -825,12 +840,10 @@ $config = [
      * Languages available, RTL languages, and what language is the default.
      */
     'language.available' => [
-        'en', 'no', 'nn', 'se', 'da', 'de', 'sv', 'fi', 'es', 'ca', 'fr', 'it', 'nl', 'lb',
-        'cs', 'sk', 'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt_BR', 'tr', 'ja', 'zh', 'zh_TW',
-        'ru', 'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st'
+        'en', 'ru', 'tt'
     ],
     'language.rtl' => ['ar', 'dv', 'fa', 'ur', 'he'],
-    'language.default' => 'en',
+    'language.default' => 'ru',
 
     /*
      * Options to override the default settings for the language parameter
