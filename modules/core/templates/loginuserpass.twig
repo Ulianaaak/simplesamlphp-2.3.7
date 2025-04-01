@@ -1,4 +1,4 @@
-{% set pagetitle = 'Enter your username and password'|trans %}
+{% set pagetitle = 'Authorization Center'|trans %}
 {% extends "base.twig" %}
 
 {% block postload %}
@@ -120,6 +120,21 @@
                         </div>
                     </form>
                 </div>
+                <div id="fixed-tabs-dropdown">
+                    <div class="dropdown">
+                        <button class="dropbtn">{{ 'Language' | trans }}</button>
+                        <div class="dropdown-content">
+                            {% for key, lang in languageBar %}
+                                {% if key == currentLanguage %}
+                                    <li  class="pure-menu-item"><a class="pure-menu-heading" href="#">{{ lang.name }}</a></li>
+                                {% else %}
+                                    {% if lang.url %}
+                                        <li class="pure-menu-item"><a href="{{ lang.url }}{% if queryParams %}&{% endif %}{% for name, value in queryParams %}{% if not loop.first %}&{% endif %}{% if value %}{{ name }}={{ value }}{% else %}{{ name }}{% endif %}{% endfor %}" class="pure-menu-link">{{ lang.name }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div></div>
+                </div>
                 <center>
                     <h3>
                         <p class="my_center">
@@ -137,21 +152,7 @@
                     <span><em>{{ 'Support' | trans }}</em></span>
                     <span>{{ 'Technical support' | trans }}</span>
                 </a></div>
-                <div id="fixed-tabs-dropdown">
-                <div class="dropdown">
-                    <button class="dropbtn">{{ 'Language' | trans }}</button>
-                    <div class="dropdown-content">
-                        {% for key, lang in languageBar %}
-                            {% if key == currentLanguage %}
-                                <li  class="pure-menu-item"><a class="pure-menu-heading" href="#">{{ lang.name }}</a></li>
-                            {% else %}
-                                {% if lang.url %}
-                                    <li class="pure-menu-item"><a href="{{ lang.url }}{% if queryParams %}&{% endif %}{% for name, value in queryParams %}{% if not loop.first %}&{% endif %}{% if value %}{{ name }}={{ value }}{% else %}{{ name }}{% endif %}{% endfor %}" class="pure-menu-link">{{ lang.name }}</a></li>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                </div></div>
-            </div>
+
         </section>
     </div>
     {% if loginpage_links is defined %}

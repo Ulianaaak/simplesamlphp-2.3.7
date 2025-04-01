@@ -1879,8 +1879,8 @@ padding:28px 55px;margin:0 0;border:2px solid rgb(21,57,128);border-radius:2px;b
 	display:block
 }
 
-#fixed-tabs {position: fixed; right: 0; text-align: center; line-height: 1; font-size: 0; display: block;}
-#fixed-tabs a {font-size: 16px; color: #fff; position: relative; overflow: hidden; text-transform: uppercase;}
+#fixed-tabs, #fixed-tabs-dropdown {position: fixed; right: 0; text-align: center; line-height: 1; font-size: 0; display: block;}
+#fixed-tabs a, #fixed-tabs-dropdown a {font-size: 16px; color: #fff; position: relative; overflow: hidden; text-transform: uppercase;}
 #fixed-tabs a small {font-size: 10px; display: block;}
 #fixed-tabs i, #fixed-tabs i:before { display: block; margin: 0 auto!important}
 #fixed-tabs em {font-size: 10px; font-style: normal; display: none;}
@@ -1991,7 +1991,7 @@ padding:28px 55px;margin:0 0;border:2px solid rgb(21,57,128);border-radius:2px;b
 	display: inline-block;
 	width: 100px;
 	margin-right: 0;
-	margin-top: 100px;
+	margin-top: 150px;
 }
 
 .dropdown-content {
@@ -2022,7 +2022,4 @@ padding:28px 55px;margin:0 0;border:2px solid rgb(21,57,128);border-radius:2px;b
 	display: block;
 	width: 100px;
 }
-
-#fixed-tabs-dropdown {position: fixed; right: 0; text-align: center; line-height: 1; font-size: 0; display: block;}
-#fixed-tabs-dropdown a {font-size: 16px; color: #fff; position: relative; overflow: hidden; text-transform: uppercase;}
 
